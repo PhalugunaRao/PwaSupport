@@ -1,9 +1,16 @@
-WebUtils: Contains URL loading and WebView storage settings.
 
-ReusableDownloadListener: Handles file downloads and file viewing.
+WebUtils:
+-  Contains URL loading and WebView storage settings.
 
-ReusableChromeClient: Manages file uploads and location permission enablement.
+ReusableDownloadListener:
+-  Handles file downloads and file viewing.
 
-PwaPermissionManager: This is optional; you can implement your own if needed.
+ReusableChromeClient:
+-  Manages file uploads and location permission enablement.
 
-PaymentHandler: Manages all payment information.
+PwaPermissionManager:
+-  This is optional; you can implement your own if needed.
+
+PaymentHandler:
+-  Manages all payment information.
+

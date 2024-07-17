@@ -21,14 +21,3 @@ object NetworkUtil {
         }
     }
 }
-
-fun View.hide() {
-    this.visibility = View.INVISIBLE
-}
-
-fun View.remove() {
-    this.visibility = View.GONE
-}
-fun View.show() {
-    this.visibility = View.VISIBLE
-}

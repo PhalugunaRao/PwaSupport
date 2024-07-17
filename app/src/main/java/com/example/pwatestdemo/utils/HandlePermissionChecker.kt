@@ -1,4 +1,4 @@
-package com.ekincare.webutil
+package com.example.pwatestdemo.utils
 
 import android.Manifest
 import android.app.Activity
@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.pwatestdemo.utils.PwaKeys
 
 class HandlePermissionChecker(private val context: Context) {
 

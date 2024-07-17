@@ -84,7 +84,6 @@ class ReusableChromeClient(
                 val imgUrl: Uri
                 imgUrl = if (mActivity.applicationInfo.targetSdkVersion > Build.VERSION_CODES.M) {
                     val authority = BuildConfig.APPLICATION_ID + ".fileprovider"
-                    //val authority = "com.example.pwatestdemo" + ".fileprovider"
                     FileProvider.getUriForFile(mActivity, authority, photoFile)
                 } else {
                     Uri.fromFile(photoFile)

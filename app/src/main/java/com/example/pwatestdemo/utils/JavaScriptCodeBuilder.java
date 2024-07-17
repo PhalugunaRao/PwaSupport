@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JavaScriptCodeBuilder {
+    // this file will communicate webview to java script and java script to webview
 
     public static JSONObject createJsonData() throws JSONException {
         JSONObject jsonDataObject = new JSONObject();

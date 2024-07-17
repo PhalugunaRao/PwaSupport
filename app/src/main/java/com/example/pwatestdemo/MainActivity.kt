@@ -17,9 +17,9 @@ import android.webkit.WebView
 import android.webkit.WebView.setWebContentsDebuggingEnabled
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.ekincare.webscript.JavaScriptEvaluator
-import com.ekincare.webscript.WebViewMethodHandler
-import com.ekincare.webutil.PaymentResponseData
+import com.example.pwatestdemo.utils.JavaScriptEvaluator
+import com.example.pwatestdemo.utils.WebViewMethodHandler
+import com.example.pwatestdemo.utils.PaymentResponseData
 import com.example.pwatestdemo.databinding.ActivityMainBinding
 import com.example.pwatestdemo.utils.JavaScriptCodeBuilder
 import com.example.pwatestdemo.utils.JavaScriptInterfaceee
@@ -30,9 +30,7 @@ import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_ACTIVI
 import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_BOTH
 import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_CAMERA
 import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_LOCATION
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_NOTIFICATION
 import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_STORAGE
-import com.example.pwatestdemo.utils.PreferenceHelper
 import com.example.pwatestdemo.utils.PwaKeys
 import com.example.pwatestdemo.utils.PwaPermissionManager
 import com.example.pwatestdemo.utils.ReusableChromeClient
@@ -67,7 +65,6 @@ class MainActivity : AppCompatActivity() ,
         var customerId: String? = ""
         var payloadData: JSONObject? = null
         var deviceId: String? = null
-        var prefs: PreferenceHelper? = null
         var bundle: Bundle? = null
         val GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 100
         private lateinit var webViewMethodHandler: WebViewMethodHandler
@@ -217,7 +214,6 @@ class MainActivity : AppCompatActivity() ,
             this.window.statusBarColor = ContextCompat.getColor(this, R.color.white)
             binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
             webView = binding.webviewPwa
-            prefs = PreferenceHelper(this)
             webViewMethodHandler = WebViewMethodHandler()
             permissionManager = PwaPermissionManager(this, binding.webviewPwa)
 
@@ -319,18 +315,6 @@ class MainActivity : AppCompatActivity() ,
             permissionManager.checkLocationSettings()
         }
 
-        fun handleGoogleFitScript() {
-            if (prefs?.isFitConnected == true) {
-                val javascriptCode: String = JavaScriptCodeBuilder.buildCode2(
-                    JavaScriptCodeBuilder.createGFConnectJsonData().toString(),
-                )
-                JavaScriptEvaluator.evaluateJavascript(binding.webviewPwa, javascriptCode) { value ->
-                }
-            }
-        }
-
-
-
 
         private suspend fun loadUrlData(url: String) {
             withContext(Dispatchers.Main) {
@@ -407,6 +391,7 @@ class MainActivity : AppCompatActivity() ,
             val javascriptCode: String = JavaScriptCodeBuilder.buildCode2(
                 JavaScriptCodeBuilder.permissionJsonData(permissionName, permissionStatus).toString(),
             )
+            println("=====javascriptCode$javascriptCode")
             JavaScriptEvaluator.evaluateJavascript(
                 binding.webviewPwa,
                 javascriptCode,
@@ -417,9 +402,6 @@ class MainActivity : AppCompatActivity() ,
 
         override fun onCLose(type: String) {
             when {
-                type.equals(PERMISSIONS_NOTIFICATION, true) -> {
-                    PreferenceHelper(this).isNp = true
-                }
                 type.equals(PERMISSIONS_LOCATION, true) -> {
                     permissionManager.locationFailed(PwaKeys.DENIED)
                 }

@@ -1,4 +1,4 @@
-package com.ekincare.webutil
+package com.example.pwatestdemo.utils
 
 import com.google.gson.annotations.SerializedName
 

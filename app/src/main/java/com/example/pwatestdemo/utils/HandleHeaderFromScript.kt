@@ -13,14 +13,4 @@ class HandleHeaderFromScript {
         val otherValue = jsonData.optString("payload", "")
         return Pair(action, otherValue)
     }
-
-    fun handelScriptData(
-        context: Context,
-        data: String,
-    ): String {
-        val data = JSONObject(data)
-        return data.getString("action")
-    }
-
-
 }

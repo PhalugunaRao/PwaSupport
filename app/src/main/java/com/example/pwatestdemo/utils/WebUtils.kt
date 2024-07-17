@@ -7,20 +7,12 @@ import android.view.Window
 import android.view.WindowManager
 import android.webkit.WebView
 import android.widget.Toast
-import java.text.SimpleDateFormat
-import java.util.*
 
 fun initialLoadUrl(): String {
-    // return "https://pwa.ekincare.com"
+    // You have to update url URl
     return "https://app.ekincare.com"
-    //return "https://app.ekincare.com"
     //return "https://pwa-staging.ekincare.com/pwa-login?slug=titan&message=ayyLk6jdIoYPV1xEDueg+H/deKqphUuhNWxm5xq9Lt85t66tT3pUiXXcnDVPhIA+1erDeVZHE7+/Jidc+hv44F3+jqHm1CJmLDRwpG50vQ1VXfU1Ku9SQxJBVL9DqUbmnCWcTQ==&auth_tag=3l9rJfh4gOPb/Lfe7ij5Qg=="
-   // return "https://pr-3902.dbxtbhegnbvf3.amplifyapp.com"
-    //return "https://pr-3819.dbxtbhegnbvf3.amplifyapp.com"
-    //return "https://pr-3761.dbxtbhegnbvf3.amplifyapp.com"
-    //return "https://pr-3756.dbxtbhegnbvf3.amplifyapp.com"
-    //return "https://pr-3405.dbxtbhegnbvf3.amplifyapp.com"
-    //return "https://pr-3304.dbxtbhegnbvf3.amplifyapp.com"
+
 }
 
 fun getLocalStorageDeviceId(

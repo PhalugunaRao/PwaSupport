@@ -1,4 +1,4 @@
-package com.ekincare.webscript
+package com.example.pwatestdemo.utils
 
 import android.Manifest
 import android.content.Context
@@ -6,28 +6,16 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.core.content.ContextCompat
-import com.ekincare.webutil.ExternalData
-import com.ekincare.webutil.HandlePermissionChecker
-import com.ekincare.webutil.PaymentResponseData
-import com.ekincare.webutil.PermissionPayloadData
 import com.example.pwatestdemo.MainActivity
-import com.example.pwatestdemo.utils.HandleHeaderFromScript
-import com.example.pwatestdemo.utils.JavaScriptCodeBuilder
-import com.example.pwatestdemo.utils.PermissionAllowDialog
-import com.example.pwatestdemo.utils.PermissionUtil
-import com.example.pwatestdemo.utils.PreferenceHelper
-import com.example.pwatestdemo.utils.PwaKeys
-import com.example.pwatestdemo.utils.permissionBundle
 import com.google.gson.Gson
 
 class WebViewMethodHandler {
     fun handleOnNativeMethod(activity: MainActivity, data: String?) {
-        val jsRequestHandler =
-            HandleHeaderFromScript()
+        val jsRequestHandler = HandleHeaderFromScript()
         val payloadData = jsRequestHandler.handleScriptData(activity, data = data!!)
         println("=======payloadData$payloadData")
         when {
-
+            // this will handle extrenal url like out side webview will open
             payloadData.first.equals("externalurl", true) -> {
                 val externalData =
                     Gson().fromJson(
@@ -38,8 +26,6 @@ class WebViewMethodHandler {
                     handleExternalUrl(url, activity)
                 }
             }
-
-
 
             payloadData.first.equals("fetchLocation", true) -> {
                 if (HandlePermissionChecker(activity).checkLocationPermissionStatus()
@@ -78,37 +64,15 @@ class WebViewMethodHandler {
                         payloadData.second,
                         PermissionPayloadData::class.java,
                     )
-                if (permissionData.permissions?.size!! > 1) {
-                    handleBoth(activity)
-                } else {
-                    permissionData.permissions?.forEach { permission ->
-                        handlePermission(permission, activity)
-                    }
-                }
+                handleBoth(activity)
+//                if (permissionData.permissions?.size!! > 1) {
+//                    handleBoth(activity)
+//                } else {
+//                    permissionData.permissions?.forEach { permission ->
+//                        handlePermission(permission, activity)
+//                    }
+//                }
             }
-
-//            payloadData.first.equals("open-support", true) -> {
-//                freshChatOptions(activity)
-//            }
-
-            payloadData.first.equals("dashboardPageLoad", true) -> {
-                if (PwaKeys.VERSION > 32) {
-                    if (!HandlePermissionChecker(activity).isPostNotificationsPermissionGranted()) {
-                        if (!PreferenceHelper(activity).isNp) {
-                            val dialogFragment = PermissionAllowDialog()
-                            dialogFragment.setPermissionListener(activity)
-                            dialogFragment.setPermissionCLoseListener(activity)
-                            dialogFragment.arguments =
-                                permissionBundle(PermissionUtil.PERMISSIONS_NOTIFICATION)
-                            dialogFragment.show(
-                                activity.supportFragmentManager,
-                                PermissionUtil.PERMISSIONS_TAG,
-                            )
-                        }
-                    }
-                }
-            }
-
 
             payloadData.first.equals("collectPayment", true) -> {
                 val paymentData =

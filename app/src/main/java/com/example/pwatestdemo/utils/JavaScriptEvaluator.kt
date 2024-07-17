@@ -1,4 +1,4 @@
-package com.ekincare.webscript
+package com.example.pwatestdemo.utils
 
 import android.os.Handler
 import android.webkit.WebView

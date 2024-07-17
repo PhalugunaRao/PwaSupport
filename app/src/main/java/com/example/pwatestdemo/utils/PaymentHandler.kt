@@ -5,9 +5,6 @@ import android.content.Context
 import android.webkit.WebView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
-import com.ekincare.webscript.JavaScriptEvaluator
-import com.ekincare.webutil.PaymentResponseData
-import com.razorpay.BuildConfig
 import com.razorpay.Checkout
 import com.razorpay.PaymentData
 import kotlinx.coroutines.Dispatchers

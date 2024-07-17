@@ -1,4 +1,4 @@
-package com.ekincare.webutil
+package com.example.pwatestdemo.utils
 
 data class PaymentResponseData(
     val amount: String?,

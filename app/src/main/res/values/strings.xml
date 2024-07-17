@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PwaTestDemo</string>
+    <string name="no_connection_desc">We were unable to fetch your data. Please try refreshing again by clicking below</string>
+    <string name="grant_permission">Grant permission</string>
+    <string name="permission_required">Permission required</string>
+    <string name="permission_location_title">Allow Location access</string>
+    <string name="permission_location_desc">We use your location information to identify, notify you about, and access services available near you like pharmacy partners and diagnostic centres while you are using the app</string>
+    <string name="permission_camera_title">Allow Camera access</string>
+    <string name="permission_camera_desc">We require access so you can share images of prescription/medical reports with your Doctor. No photos will be posted publicly. The images/video access will be strictly restricted to you and your Doctor only</string>
+    <string name="permission_storage_title">Allow Gallery access</string>
+    <string name="permission_storage_desc">We require access so you can share images of prescription/medical reports with your Doctor. No photos will be posted publicly. The images/video/file access will be strictly restricted to you and your Doctor only</string>
+    <string name="permission_calendar_title">Allow Calendar access</string>
+    <string name="permission_calendar_desc">We use your calendar to store data in your mobile device calendar and provide timely reminders for upcoming events/fitness sessions/health appointments</string>
+    <string name="permission_storage_camera_title">Allow Gallery and Camera access</string>
+    <string name="permission_storage_camera_desc">We require access so you can share images of prescription/medical reports with your Doctor. No photos will be posted publicly. The images/video/file access will be strictly restricted to you and your Doctor only</string>
+    <string name="permission_notification_title">Allow push notification access</string>
+    <string name="permission_notification_desc">Stay informed! To receive important updates, appointment reminders, and exclusive offers, please grant us permission to send push notifications.</string>
+    <string name="permission_physical_title">Allow Physical Activity access</string>
+    <string name="permission_physical_desc">ekincare require access to physical activity to track your steps</string>
+    <string name="congratulations">Congratulations!!</string>
+
+</resources>

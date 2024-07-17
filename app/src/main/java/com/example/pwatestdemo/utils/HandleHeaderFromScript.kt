@@ -1,0 +1,26 @@
+package com.example.pwatestdemo.utils
+import android.content.Context
+import org.json.JSONObject
+
+class HandleHeaderFromScript {
+
+    fun handleScriptData(
+        context: Context,
+        data: String,
+    ): Pair<String, String> {
+        val jsonData = JSONObject(data)
+        val action = jsonData.getString("action")
+        val otherValue = jsonData.optString("payload", "")
+        return Pair(action, otherValue)
+    }
+
+    fun handelScriptData(
+        context: Context,
+        data: String,
+    ): String {
+        val data = JSONObject(data)
+        return data.getString("action")
+    }
+
+
+}

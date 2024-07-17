@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:background="@drawable/corner_curves_dialog"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/permission_icon"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_gravity="top|center"
+                    android:src="@drawable/ic_permission_calendar"/>
+                <LinearLayout
+                    android:id="@+id/container_notification"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/divider"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/permission_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_20sdp"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_180sdp"
+                        android:textColor="@color/color_heading_one"
+                        android:textSize="@dimen/_18ssp"
+                        android:fontFamily="@font/proxima_nova_extrabold" />
+                    <TextView
+                        android:id="@+id/congralution_lable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:paddingRight="@dimen/_20sdp"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:lineSpacingExtra="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/congratulations"
+                        android:textColor="@color/color_heading_two"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/proxima_nova_semibold"/>
+                    <TextView
+                        android:id="@+id/permission_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_20sdp"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:lineSpacingExtra="@dimen/_6sdp"
+                        android:paddingBottom="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:textColor="@color/color_heading_two"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/proxima_nova" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/background_grey">
+
+            </View>
+            <LinearLayout
+                android:id="@+id/wallet_view_redeem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center|left|top"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingTop="@dimen/_16sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_16sdp"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="left|center"
+                        android:text="My ekincare wallet"
+                        android:textColor="@color/color_heading_one"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/proxima_nova_semibold"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="left|center"
+                        android:singleLine="true"
+                        android:text="Available balance"
+                        android:textColor="@color/sub_text_next_line"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/proxima_nova" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/redeem_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="₹120"
+                    android:textColor="@color/color_heading_one"
+                    android:textSize="@dimen/_16ssp"
+                    android:fontFamily="@font/proxima_nova_semibold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="@drawable/ic_blue_arrow" />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/permission_grant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:gravity="center"
+                android:visibility="visible"
+                android:background="@drawable/otp_enable_bg"
+                android:fontFamily="@font/proxima_nova_semibold"
+                android:paddingTop="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
+                android:text="@string/grant_permission"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="@dimen/_34sdp"
+            android:layout_height="@dimen/_34sdp"
+            android:src="@drawable/ic_close_popup"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_24sdp"/>
+    </FrameLayout>
+
+
+</layout>

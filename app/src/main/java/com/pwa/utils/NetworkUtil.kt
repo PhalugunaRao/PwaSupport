@@ -1,10 +1,9 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.view.View
 
 object NetworkUtil {
     fun isNetworkAvailable(context: Context): Boolean {

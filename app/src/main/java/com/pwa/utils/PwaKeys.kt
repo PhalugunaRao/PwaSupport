@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,8 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import com.example.pwatestdemo.MyApplication
-import com.razorpay.BuildConfig
+import com.pwa.MyApplication
 
 object PwaKeys {
     const val JS_INTERFACE = "ekincareAndroidInterface"
@@ -29,7 +28,7 @@ object PwaKeys {
 }
 
 fun getStringOutside(stringResId: Int): String? {
-    return MyApplication.instance?.resources?.getString(stringResId)
+    return MyApplication.Companion.instance?.resources?.getString(stringResId)
 }
 
 fun permissionBundle(type: String): Bundle {

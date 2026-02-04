@@ -1,8 +1,8 @@
 
-package com.example.pwatestdemo.utils;
+package com.pwa.utils;
 
 
-import static com.example.pwatestdemo.utils.ReusableDownloadListenerKt.openDownloadedFile;
+import static com.pwa.utils.ReusableDownloadListenerKt.openDownloadedFile;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

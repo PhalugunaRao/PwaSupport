@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -7,7 +7,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.example.pwatestdemo.MainActivity
+import com.pwa.MainActivity
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.Request

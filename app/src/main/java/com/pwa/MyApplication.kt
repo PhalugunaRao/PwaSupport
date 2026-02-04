@@ -1,4 +1,4 @@
-package com.example.pwatestdemo
+package com.pwa
 
 import android.app.Application
 import android.content.res.Resources

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pwatestdemo"
+    namespace = "com.pwa.pwatestdemo"
     compileSdk = 34
 
     defaultConfig {

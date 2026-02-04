@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 import android.Manifest
 import android.content.Context
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.core.content.ContextCompat
-import com.example.pwatestdemo.MainActivity
+import com.pwa.MainActivity
 import com.google.gson.Gson
 
 class WebViewMethodHandler {

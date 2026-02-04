@@ -1,6 +1,6 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
-import com.example.pwatestdemo.R
+import com.pwa.pwatestdemo.R
 
 
 class PermissionUtil {

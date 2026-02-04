@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 import android.content.Context
 import org.json.JSONObject
 

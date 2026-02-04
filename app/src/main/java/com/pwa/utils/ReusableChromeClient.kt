@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import com.example.pwatestdemo.BuildConfig
+import com.pwa.pwatestdemo.BuildConfig
 import android.os.Message
 import android.provider.MediaStore
 import android.util.Log

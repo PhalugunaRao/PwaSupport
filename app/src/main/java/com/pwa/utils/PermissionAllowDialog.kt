@@ -1,12 +1,12 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
+import android.R
 import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.example.pwatestdemo.R
-import com.example.pwatestdemo.databinding.AllowPermissionBinding
+import com.pwa.pwatestdemo.databinding.AllowPermissionBinding
 
 class PermissionAllowDialog : DialogFragment() {
     internal var context: Context? = null
@@ -31,7 +31,7 @@ class PermissionAllowDialog : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
         val window = dialog?.window
         window?.apply {
-            setBackgroundDrawableResource(android.R.color.transparent)
+            setBackgroundDrawableResource(R.color.transparent)
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             setGravity(Gravity.BOTTOM)
         }

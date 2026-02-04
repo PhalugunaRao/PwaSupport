@@ -1,4 +1,4 @@
-package com.example.pwatestdemo.utils
+package com.pwa.utils
 
 data class PaymentResponseData(
     val amount: String?,

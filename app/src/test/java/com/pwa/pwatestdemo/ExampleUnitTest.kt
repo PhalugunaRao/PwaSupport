@@ -1,4 +1,4 @@
-package com.example.pwatestdemo
+package com.pwa.pwatestdemo
 
 import org.junit.Test
 

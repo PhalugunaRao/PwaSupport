@@ -1,6 +1,5 @@
-package com.example.pwatestdemo
+package com.pwa
 
-import android.app.Activity
 import android.Manifest
 import android.content.Intent
 import androidx.databinding.DataBindingUtil
@@ -17,29 +16,25 @@ import android.webkit.WebView
 import android.webkit.WebView.setWebContentsDebuggingEnabled
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.pwatestdemo.utils.JavaScriptEvaluator
-import com.example.pwatestdemo.utils.WebViewMethodHandler
-import com.example.pwatestdemo.utils.PaymentResponseData
-import com.example.pwatestdemo.databinding.ActivityMainBinding
-import com.example.pwatestdemo.utils.JavaScriptCodeBuilder
-import com.example.pwatestdemo.utils.JavaScriptInterfaceee
-import com.example.pwatestdemo.utils.NetworkUtil
-import com.example.pwatestdemo.utils.PaymentHandler
-import com.example.pwatestdemo.utils.PermissionAllowDialog
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_ACTIVITY
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_BOTH
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_CAMERA
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_LOCATION
-import com.example.pwatestdemo.utils.PermissionUtil.Companion.PERMISSIONS_STORAGE
-import com.example.pwatestdemo.utils.PwaKeys
-import com.example.pwatestdemo.utils.PwaPermissionManager
-import com.example.pwatestdemo.utils.ReusableChromeClient
-import com.example.pwatestdemo.utils.ReusableDownloadListener
-import com.example.pwatestdemo.utils.ReusableWebViewClient
-import com.example.pwatestdemo.utils.initialLoadUrl
-import com.example.pwatestdemo.utils.remove
-import com.example.pwatestdemo.utils.show
-import com.example.pwatestdemo.utils.whiteStatus
+import com.pwa.utils.JavaScriptEvaluator
+import com.pwa.utils.WebViewMethodHandler
+import com.pwa.utils.PaymentResponseData
+import com.pwa.pwatestdemo.databinding.ActivityMainBinding
+import com.pwa.utils.JavaScriptCodeBuilder
+import com.pwa.utils.JavaScriptInterfaceee
+import com.pwa.utils.NetworkUtil
+import com.pwa.utils.PaymentHandler
+import com.pwa.utils.PermissionAllowDialog
+import com.pwa.utils.PwaKeys
+import com.pwa.utils.PwaPermissionManager
+import com.pwa.utils.ReusableChromeClient
+import com.pwa.utils.ReusableDownloadListener
+import com.pwa.utils.ReusableWebViewClient
+import com.pwa.utils.initialLoadUrl
+import com.pwa.utils.remove
+import com.pwa.utils.show
+import com.pwa.utils.whiteStatus
+import com.pwa.utils.PermissionUtil
 import com.razorpay.PaymentData
 import com.razorpay.PaymentResultWithDataListener
 import kotlinx.coroutines.CoroutineScope
@@ -90,7 +85,7 @@ class MainActivity : AppCompatActivity() ,
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             super.onActivityResult(requestCode, resultCode, data)
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 if (requestCode == PwaKeys.GPS_REQUEST) {
                     if (permissionManager.isLocationEnabled()) {
                         permissionManager.getLocation()
@@ -102,7 +97,7 @@ class MainActivity : AppCompatActivity() ,
                         val javascriptCode: String = JavaScriptCodeBuilder.buildCode2(
                             JavaScriptCodeBuilder.createGFConnectJsonData().toString(),
                         )
-                        JavaScriptEvaluator.evaluateJavascript(
+                        JavaScriptEvaluator.Companion.evaluateJavascript(
                             binding.webviewPwa,
                             javascriptCode,
                         ) { value ->
@@ -392,7 +387,7 @@ class MainActivity : AppCompatActivity() ,
                 JavaScriptCodeBuilder.permissionJsonData(permissionName, permissionStatus).toString(),
             )
             println("=====javascriptCode$javascriptCode")
-            JavaScriptEvaluator.evaluateJavascript(
+            JavaScriptEvaluator.Companion.evaluateJavascript(
                 binding.webviewPwa,
                 javascriptCode,
             ) { value ->
@@ -402,16 +397,16 @@ class MainActivity : AppCompatActivity() ,
 
         override fun onCLose(type: String) {
             when {
-                type.equals(PERMISSIONS_LOCATION, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_LOCATION, true) -> {
                     permissionManager.locationFailed(PwaKeys.DENIED)
                 }
-                type.equals(PERMISSIONS_STORAGE, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_STORAGE, true) -> {
                     permissionManager.storageJs(PwaKeys.STORAGE, PwaKeys.PROMPT)
                 }
-                type.equals(PERMISSIONS_CAMERA, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_CAMERA, true) -> {
                     permissionManager.storageJs(PwaKeys.CAMERA, PwaKeys.PROMPT)
                 }
-                type.equals(PERMISSIONS_BOTH, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_BOTH, true) -> {
                     permissionManager.storageJs(PwaKeys.STORAGE, PwaKeys.PROMPT)
                     permissionManager.storageJs(PwaKeys.CAMERA, PwaKeys.PROMPT)
                 }
@@ -419,10 +414,10 @@ class MainActivity : AppCompatActivity() ,
         }
         override fun permissionGrant(type: String) {
             when {
-                type.equals(PERMISSIONS_ACTIVITY, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_ACTIVITY, true) -> {
                     permissionManager.isActivityRecognitionPermissionGranted(this)
                 }
-                type.equals(PERMISSIONS_BOTH, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_BOTH, true) -> {
                     if (!permissionManager.hasCameraPermission() && !permissionManager.hasStoragePermission()) {
                         permissionManager.requestCameraAndStoragePermissions()
                     } else {
@@ -430,21 +425,21 @@ class MainActivity : AppCompatActivity() ,
                         permissionManager.storageJs(PwaKeys.CAMERA, PwaKeys.GRANTED)
                     }
                 }
-                type.equals(PERMISSIONS_LOCATION, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_LOCATION, true) -> {
                     if (!permissionManager.checkLocationPermissions()) {
                         permissionManager.requestLocationPermissions()
                     } else {
                         permissionManager.checkLocationSettings()
                     }
                 }
-                type.equals(PERMISSIONS_CAMERA, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_CAMERA, true) -> {
                     if (!permissionManager.hasCameraPermission()) {
                         permissionManager.requestCameraPermissions()
                     } else {
                         permissionManager.storageJs(PwaKeys.CAMERA, PwaKeys.GRANTED)
                     }
                 }
-                type.equals(PERMISSIONS_STORAGE, true) -> {
+                type.equals(PermissionUtil.Companion.PERMISSIONS_STORAGE, true) -> {
                     if (!permissionManager.hasStoragePermission()) {
                         permissionManager.requestStoragePermission()
                     } else {
